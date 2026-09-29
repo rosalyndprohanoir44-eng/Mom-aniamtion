@@ -13,7 +13,7 @@ and **3D toon-shaded animation**, with **karaoke lyrics** synced word by word.
 | File | What it is |
 |---|---|
 | `output/white-bear-and-claude-pet.mp4` | The finished video, 1920×1080, 30 fps, with the song |
-| `dist/white-bear-and-claude-pet.html` | Interactive player in one file (song included, works offline): open it in Chrome / Edge / Firefox / Safari and press play. It renders live, so it runs at your screen's refresh rate |
+| `dist/white-bear-and-claude-pet.html` | Interactive player in one file (song included, works offline): open it in a modern browser and press play (tested in Chromium). It renders the animation live, so it can run at your screen's refresh rate on a GPU-accelerated browser |
 | `index.html` | The same player, loading `dist/app.js` and `assets/song.mp3` |
 
 Player keys: `Space` play/pause, `←`/`→` seek 5 s, `F` fullscreen. Click the bar to seek.
