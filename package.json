@@ -2,15 +2,20 @@
   "name": "white-bear-claude-pet",
   "version": "1.0.0",
   "private": true,
-  "description": "Music video: White Bear & Claude Pet - 2D + 3D animation with karaoke lyrics",
+  "description": "Animations: White Bear & Claude Pet music video (2D + 3D) and Iron and Ash (Hyun's Dojo-style stick fight)",
   "type": "module",
   "scripts": {
     "build": "node tools/build.mjs",
-    "render": "node tools/render.mjs"
+    "render": "node tools/render.mjs",
+    "fight:sfx": "node stickfight/tools/sfx-events.mjs > stickfight/tools/sfx-events.json && python3 stickfight/tools/sfx.py",
+    "fight:build": "node tools/build.mjs --project stickfight",
+    "fight:render": "node tools/render.mjs --page stickfight/index.html --song stickfight/assets/mix.mp3 --duration 110.2 --fps 60 --crf 18 --out stickfight/output/iron-and-ash.mp4"
   },
   "devDependencies": {
+    "@fontsource/bebas-neue": "^5.3.0",
     "@fontsource/fredoka": "^5.3.0",
     "@fontsource/gaegu": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0",
     "esbuild": "^0.28.2",
     "playwright": "1.56.1",
     "three": "^0.186.1"

@@ -6,6 +6,8 @@
 //
 //   node tools/render.mjs                          # 1080p30 -> output/white-bear-and-claude-pet.mp4
 //   node tools/render.mjs --fps 60 --workers 4
+//   node tools/render.mjs --page stickfight/index.html --song stickfight/assets/mix.mp3 \
+//        --duration 110.2 --fps 60 --out stickfight/output/iron-and-ash.mp4   (the stickman fight)
 //   node tools/render.mjs --from 30 --to 40 --out /tmp/clip.mp4   (a clip)
 //   node tools/render.mjs --bench 20               # time 20 frames and exit
 import { chromium } from 'playwright';
@@ -22,7 +24,9 @@ const arg = (k, d) => {
   return i >= 0 ? argv[i + 1] : d;
 };
 const FPS = parseFloat(arg('--fps', '30'));
-const DURATION = 78.36;
+const PAGE = resolve(ROOT, arg('--page', 'index.html'));
+const SONG = resolve(ROOT, arg('--song', 'assets/song.mp3'));
+const DURATION = parseFloat(arg('--duration', '78.36'));
 const FROM = parseFloat(arg('--from', '0'));
 const TO = Math.min(DURATION, parseFloat(arg('--to', String(DURATION))));
 const WORKERS = parseInt(arg('--workers', String(Math.max(1, Math.min(4, os.cpus().length - 1)))), 10);
@@ -41,7 +45,7 @@ async function openPage() {
   });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => console.error('[pageerror]', e.message));
-  await page.goto('file://' + resolve(ROOT, 'index.html') + '?render=1');
+  await page.goto('file://' + PAGE + '?render=1');
   await page.waitForFunction(() => window.__ready === true, null, { timeout: 120000 });
   const cdp = await page.context().newCDPSession(page);
   return { browser, page, cdp };
@@ -122,7 +126,7 @@ async function main() {
   await Promise.all(jobs);
   const list = resolve(TMP, 'list.txt');
   writeFileSync(list, segs.map((s) => `file '${s}'`).join('\n'));
-  const song = resolve(ROOT, 'assets/song.mp3');
+  const song = SONG;
   await new Promise((res, rej) => {
     const ff = spawn('ffmpeg', [
       '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list,

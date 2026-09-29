@@ -1,3 +1,14 @@
+# Animations
+
+This repository holds two animated films. Both are plain JavaScript, rendered frame by frame to MP4:
+
+| Film | Folder | What it is |
+|---|---|---|
+| **White Bear & Claude Pet**: *We Are Cute, We Are Bear* | this page | A 78 s music video mixing 2D and 3D animation, with karaoke lyrics |
+| **Iron and Ash (鉄と灰)** | [`stickfight/`](stickfight/README.md) | A 110 s Hyun's Dojo-style 2D stick fight: a tsundere anime girl with wind powers takes on a horde to protect a flower. Japanese dialogue with English subtitles |
+
+---
+
 # White Bear & Claude Pet — *We Are Cute, We Are Bear*
 
 A 78-second music video for the song in `assets/song.mp3`, starring **White Bear**
