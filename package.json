@@ -1,0 +1,18 @@
+{
+  "name": "white-bear-claude-pet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Music video: White Bear & Claude Pet - 2D + 3D animation with karaoke lyrics",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "render": "node tools/render.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/fredoka": "^5.3.0",
+    "@fontsource/gaegu": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "playwright": "1.56.1",
+    "three": "^0.186.1"
+  }
+}
