@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SG vs 67</title>
+<style>
+  :root { --ink: #141414; --teal: #6a3be0; --red: #e3242b; }
+  html, body { margin: 0; height: 100%; background: #101010; overflow: hidden; font-family: system-ui, sans-serif; }
+  #stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: 50% 50%; transform: translate(-50%, -50%); background: #fff; cursor: pointer; }
+  #stage canvas { display: block; width: 1920px; height: 1080px; }
+  body.render #controls, body.render #bigplay, body.render #loading { display: none !important; }
+  #loading { position: fixed; inset: 0; display: grid; place-items: center; color: #eee; font-size: 22px; letter-spacing: .06em; }
+  body.ready #loading { display: none; }
+  #bigplay { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 124px; height: 124px; border-radius: 50%;
+    border: 6px solid var(--ink); background: var(--red); box-shadow: 0 10px 30px rgba(0,0,0,.35); cursor: pointer; display: none; }
+  #bigplay::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-35%, -50%);
+    border-style: solid; border-width: 26px 0 26px 42px; border-color: transparent transparent transparent #fff; }
+  body.ready:not(.playing) #bigplay { display: block; }
+  #controls { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 18px; display: flex; gap: 14px; align-items: center;
+    background: linear-gradient(transparent, rgba(10,10,10,.78)); color: #fff; opacity: 0; transition: opacity .3s; }
+  body:hover #controls, body:not(.playing) #controls { opacity: 1; }
+  #controls button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; cursor: pointer; display: grid; place-items: center; }
+  #controls button:hover { background: rgba(255,255,255,.26); }
+  #play::before { content: ''; border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+  body.playing #play::before { border: 0; width: 14px; height: 18px; margin: 0; background: linear-gradient(90deg, #fff 35%, transparent 35% 65%, #fff 65%); }
+  #bar { flex: 1; height: 10px; border-radius: 5px; background: rgba(255,255,255,.22); cursor: pointer; position: relative; touch-action: none; }
+  #fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 5px; background: linear-gradient(90deg, var(--teal), var(--red)); }
+  #time { font-variant-numeric: tabular-nums; min-width: 92px; text-align: right; font-size: 15px; }
+  #full::before { content: ''; width: 16px; height: 16px; border: 3px solid #fff; border-radius: 3px; box-sizing: border-box; }
+</style>
+</head>
+<body>
+  <div id="loading">loading SG vs 67…</div>
+  <div id="stage"></div>
+  <button id="bigplay" aria-label="Play"></button>
+  <div id="controls">
+    <button id="play" aria-label="Play"></button>
+    <div id="bar"><div id="fill"></div></div>
+    <div id="time">0:00 / 1:32</div>
+    <button id="full" aria-label="Fullscreen"></button>
+  </div>
+  <audio id="song" src="assets/mix.mp3" preload="auto"></audio>
+  <script src="dist/app.js"></script>
+</body>
+</html>

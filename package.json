@@ -2,14 +2,17 @@
   "name": "white-bear-claude-pet",
   "version": "1.0.0",
   "private": true,
-  "description": "Animations: White Bear & Claude Pet music video (2D + 3D) and Iron and Ash (Hyun's Dojo-style stick fight)",
+  "description": "Animations: White Bear & Claude Pet music video (2D + 3D), Iron and Ash and SG vs 67 (Hyun's Dojo-style stick fights)",
   "type": "module",
   "scripts": {
     "build": "node tools/build.mjs",
     "render": "node tools/render.mjs",
     "fight:sfx": "node stickfight/tools/sfx-events.mjs > stickfight/tools/sfx-events.json && python3 stickfight/tools/sfx.py",
     "fight:build": "node tools/build.mjs --project stickfight",
-    "fight:render": "node tools/render.mjs --page stickfight/index.html --song stickfight/assets/mix.mp3 --duration 110.2 --fps 60 --crf 18 --out stickfight/output/iron-and-ash.mp4"
+    "fight:render": "node tools/render.mjs --page stickfight/index.html --song stickfight/assets/mix.mp3 --duration 110.2 --fps 60 --crf 18 --out stickfight/output/iron-and-ash.mp4",
+    "sg:sfx": "python3 sgvs67/tools/music.py && node sgvs67/tools/sfx-events.mjs > sgvs67/tools/sfx-events.json && python3 sgvs67/tools/sfx.py",
+    "sg:build": "node tools/build.mjs --project sgvs67",
+    "sg:render": "node tools/render.mjs --page sgvs67/index.html --song sgvs67/assets/mix.mp3 --duration 92.5 --fps 60 --crf 18 --out sgvs67/output/sg-vs-67.mp4"
   },
   "devDependencies": {
     "@fontsource/bebas-neue": "^5.3.0",

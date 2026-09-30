@@ -1,11 +1,12 @@
 # Animations
 
-This repository holds two animated films. Both are plain JavaScript, rendered frame by frame to MP4:
+This repository holds three animated films. All are plain JavaScript, rendered frame by frame to MP4:
 
 | Film | Folder | What it is |
 |---|---|---|
 | **White Bear & Claude Pet**: *We Are Cute, We Are Bear* | this page | A 78 s music video mixing 2D and 3D animation, with karaoke lyrics |
 | **Iron and Ash (鉄と灰)** | [`stickfight/`](stickfight/README.md) | A 110 s Hyun's Dojo-style 2D stick fight: a tsundere anime girl with wind powers takes on a horde to protect a flower. Japanese dialogue with English subtitles |
+| **SG vs 67** | [`sgvs67/`](sgvs67/README.md) | A 92 s Hyun's Dojo-style stick fight in a Singapore HDB estate: kiasu SG against the "6-7" meme, over a chope'd hawker table. It uses a smoother engine (spline motion, 3D turns, motion blur), has destructible buildings, a giant, custom skills, an original phonk track and Singlish dialogue |
 
 ---
 

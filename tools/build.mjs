@@ -3,6 +3,7 @@
 //
 //   node tools/build.mjs                        -> dist/app.js + dist/white-bear-and-claude-pet.html
 //   node tools/build.mjs --project stickfight   -> stickfight/dist/app.js + stickfight/dist/iron-and-ash.html
+//   node tools/build.mjs --project sgvs67       -> sgvs67/dist/app.js + sgvs67/dist/sg-vs-67.html
 //   node tools/build.mjs --entry src/x.js --out /tmp/x.js   (dev pages, no single-file output)
 import { build } from 'esbuild';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
@@ -19,6 +20,7 @@ const opt = (name, def) => {
 const PROJECTS = {
   bear: { dir: '.', entry: 'src/main.js', audio: 'assets/song.mp3', single: 'dist/white-bear-and-claude-pet.html' },
   stickfight: { dir: 'stickfight', entry: 'src/main.js', audio: 'assets/mix.mp3', single: 'dist/iron-and-ash.html' },
+  sgvs67: { dir: 'sgvs67', entry: 'src/main.js', audio: 'assets/mix.mp3', single: 'dist/sg-vs-67.html' },
 };
 const P = PROJECTS[opt('--project', 'bear')];
 const base = resolve(ROOT, P.dir);
